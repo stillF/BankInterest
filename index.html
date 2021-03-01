@@ -111,7 +111,7 @@
                 toastr.error("「年利率」格式錯誤，請重新輸入。");
                 return false;
             }
-            let _total = _.divide(_.multiply(_amount, _.divide(_interest, 100)), 12);
+            let _total = _.divide(_.multiply(_amount["text"], _.divide(_interest["text"], 100)), 12);
             $("#resultArea").append("每月利息：" + _total + " 元");
         }
 

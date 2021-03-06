@@ -106,7 +106,7 @@
                 toastr.error("「金額」格式錯誤，請重新輸入。");
                 return false;
             }
-            let _interest = isDecimal_21($("#interest").val());
+            let _interest = isDecimal_63($("#interest").val());
             if (_interest["class"] === "danger") {
                 toastr.error("「年利率」格式錯誤，請重新輸入。");
                 return false;
@@ -132,9 +132,9 @@
         }
 
 
-        function isDecimal_21(_string) {
+        function isDecimal_63(_string) {
             if (!isNaN(parseFloat(_string)) && isFinite(_string)) {
-                let re = /^\d{1,1}(\.\d{0,1})?$/;
+                let re = /^\d{1,3}(\.\d{0,3})?$/;
                 if (!re.test(_string)) {
                     return result = {
                         text: _string,
@@ -142,7 +142,7 @@
                     };
                 } else {
                     return result = {
-                        text: parseFloat(_string).toFixed(1),
+                        text: parseFloat(_string).toFixed(3),
                         class: ""
                     };
                 }

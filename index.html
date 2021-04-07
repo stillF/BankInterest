@@ -13,15 +13,6 @@
     <script type="text/javascript" src="/BankInterest/js/select2.js"></script>
     <script type="text/javascript" src="/BankInterest/js/toastr.min.js"></script>
     <script type="text/javascript" src="/BankInterest/js/lodash.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/fontawesome-all.css">
-    <link rel="stylesheet" type="text/css" href="/css/select2.css">
-    <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/select2.js"></script>
-    <script type="text/javascript" src="/js/toastr.min.js"></script>
-    <script type="text/javascript" src="/js/lodash.js"></script>-->
 </head>
 <body>
     <header>
@@ -102,12 +93,12 @@
         function computeData() {
             $("#resultArea").empty();
             let _amount = isNumber($("#amount").val());
-            if (_amount["class"] === "danger") {
+            if (_amount["status"] === 1) {
                 toastr.error("「金額」格式錯誤，請重新輸入。");
                 return false;
             }
             let _interest = isDecimal_63($("#interest").val());
-            if (_interest["class"] === "danger") {
+            if (_interest["status"] === 1) {
                 toastr.error("「年利率」格式錯誤，請重新輸入。");
                 return false;
             }
@@ -121,12 +112,12 @@
             if (!re.test(_string)) {
                 return result = {
                     text: _string,
-                    class: "danger"
+                    status: 1
                 };
             } else {
                 return result = {
                     text: parseInt(_string),
-                    class: ""
+                    status: 0
                 };
             }
         }
@@ -138,18 +129,18 @@
                 if (!re.test(_string)) {
                     return result = {
                         text: _string,
-                        class: "danger"
+                        status: 1
                     };
                 } else {
                     return result = {
                         text: parseFloat(_string).toFixed(3),
-                        class: ""
+                        status: 0
                     };
                 }
             } else {
                 return result = {
                     text: _string,
-                    class: "danger"
+                    status: 1
                 };
             }
         }
